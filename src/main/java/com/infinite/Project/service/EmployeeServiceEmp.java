@@ -35,6 +35,7 @@ public class EmployeeServiceEmp implements IEmployeeService {
 	public String findByUseidandPassword(int empid, String password) {
 		
 		//redirecting to the repository layer
+		
 		BasicConfigurator.configure();
 		return emprepo.findByUseidandPassword(empid, password);
 	}
