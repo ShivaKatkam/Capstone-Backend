@@ -1,0 +1,10 @@
+use payroll;
+
+create table employee_table(emp_id integer primary key , empname char(50), email varchar(50), password varchar(50), department char(50), designation char(50),last_login varchar(50));
+
+create table deduction_table(emp_id integer, type_of_deduction varchar(50), deduction_amount integer,foreign key(emp_id) references employee_table(emp_id));
+
+create table attandance_table(emp_id integer,no_of_leaves integer,leaves_taken integer,month char(50),year integer,foreign key(emp_id) references employee_table(emp_id));
+
+create table payroll_table(pay_id integer primary key,emp_id integer,pf_no integer, salary integer,datefrom varchar(50),dateto varchar(50),status varchar(50),foreign key (emp_id) references attandance_table(emp_id));
+
