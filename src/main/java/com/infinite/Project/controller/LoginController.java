@@ -44,7 +44,7 @@ public class LoginController {
 		try {
 			//calling service layer functions
 			String s = service.findByUseidandPassword(empl.getEmp_id(), empl.getPassword());
-			System.out.println(s);
+			
 			//verifying the login is hr or employee
 			if(!s.matches("false"))
 			{

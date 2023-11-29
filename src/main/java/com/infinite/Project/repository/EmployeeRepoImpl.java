@@ -52,19 +52,13 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 			// executing the query
 			rs = pt.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(5));
-
+				
 				// validating login is hr or employee
 				return rs.getString(5);
-//				if (rs.getString(5).matches("hr")) {
-//					return "hr";
-//				} else if (rs.getString(5).matches("emp")) {
-//					return "emp";
-//				}
 			}
 		} catch (Exception e) {
 			// printing the exception if occured
-			System.out.println(e.getCause());
+			logger.error(e.getCause());
 		}
 
 		// returning false if credentials fails
@@ -101,7 +95,7 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 
 		} catch (Exception e) {
 			// printing the exception if occured
-			System.out.println(e.getCause());
+			logger.error(e.getCause());
 		}
 	}
 
@@ -116,10 +110,7 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 		PreparedStatement pt = null;
 		ResultSet rs = null;
 
-		System.out.println("allemp func");
-
 		try {
-			System.out.println("try in");
 			// handing exceptions
 
 			// creating database connection
@@ -130,7 +121,7 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 			pt = con.prepareStatement("select * from employee_table;");
 			rs = pt.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + " " + rs.getString(2));
+				//checking other than hr
 				if (!rs.getString(5).matches("hr")) {
 					Employee emp = new Employee();
 					emp.setEmp_id(rs.getInt(1));
@@ -140,7 +131,7 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 					emp.setDepartment(rs.getString(5));
 					emp.setDesignation(rs.getString(6));
 					emp.setLast_login(rs.getString(7));
-					System.out.println(emp.getEmp_id() + " " + emp.getEmp_name());
+					//adding employee class to list
 					ls.add(emp);
 				}
 
@@ -148,7 +139,7 @@ public class EmployeeRepoImpl implements IEmployeeRepo {
 
 		} catch (Exception e) {
 			// printing the exception if occured
-			System.out.println(e.getCause());
+			logger.error(e.getCause());
 		}
 		return ls;
 	}
