@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infinite.Project.pojo.Employee;
-import com.infinite.Project.pojo.LoginEmp;
 import com.infinite.Project.pojo.LoginMessage;
 import com.infinite.Project.repository.IEmployeeRepo;
 import com.infinite.Project.service.EmployeeServiceEmp;
