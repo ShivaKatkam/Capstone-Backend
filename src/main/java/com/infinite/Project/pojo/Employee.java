@@ -10,8 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "employee_table")
 public class Employee {
-	
-	//Pojo class for employee 
+
+	// Pojo class for employee
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,23 +28,33 @@ public class Employee {
 	private String password;
 
 	@Column(name = "department")
-	private int department;
+	private String department;
 
 	@Column(name = "designation")
-	private int designation;
+	private String designation;
 
 	@Column(name = "last_login")
-	private int last_login;
-	
+	private String last_login;
+
 	// Constructors for employee
-	
+
 	public Employee() {
 		super();
 	}
 
-	public Employee(int emp_id, String name, String email, String password, int department, int designation,
-			int last_login, String emp_name) {
-		super();
+	public Employee(int emp_id, String password) {
+		this.emp_id = emp_id;
+		this.password = password;
+	}
+
+	public Employee(int emp_id, String emp_name, String email) {
+		this.emp_id = emp_id;
+		this.emp_name = emp_name;
+		this.email = email;
+	}
+
+	public Employee(int emp_id, String emp_name, String email, String password, String department, String designation,
+			String last_login) {
 		this.emp_id = emp_id;
 		this.emp_name = emp_name;
 		this.email = email;
@@ -54,13 +64,7 @@ public class Employee {
 		this.last_login = last_login;
 	}
 
-	public Employee(int emp_id, String password) {
-		super();
-		this.emp_id = emp_id;
-		this.password = password;
-	}
-	
-	//Getters and Setters
+	// Getters and Setters
 
 	public int getEmp_id() {
 		return emp_id;
@@ -94,27 +98,27 @@ public class Employee {
 		this.password = password;
 	}
 
-	public int getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(int department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 
-	public int getDesignation() {
+	public String getDesignation() {
 		return designation;
 	}
 
-	public void setDesignation(int designation) {
+	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
 
-	public int getLast_login() {
+	public String getLast_login() {
 		return last_login;
 	}
 
-	public void setLast_login(int last_login) {
+	public void setLast_login(String last_login) {
 		this.last_login = last_login;
 	}
 

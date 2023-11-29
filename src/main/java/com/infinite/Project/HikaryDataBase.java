@@ -14,11 +14,11 @@ public class HikaryDataBase {
         if (datasource == null) {
         	//initializing data source configuration
             HikariConfig config = new HikariConfig();
-            config.setJdbcUrl("jdbc:mysql://localhost:3306/payroll");
+            config.setJdbcUrl("jdbc:mysql://localhost:3306/payroll?useSSL=false");
             config.setUsername("root");
             config.setPassword("mysql123@");
             config.setMaximumPoolSize(10);
-            config.setAutoCommit(false);
+            config.setAutoCommit(true);
             config.addDataSourceProperty("cachePrepStmts", "true");
             config.addDataSourceProperty("PrepStmtCacheSize", "250");
             config.addDataSourceProperty("PrepStmtCacheSqlLimit", "2048");

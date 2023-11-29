@@ -44,22 +44,19 @@ public class LoginController {
 		try {
 			//calling service layer functions
 			String s = service.findByUseidandPassword(empl.getEmp_id(), empl.getPassword());
-			
+			System.out.println(s);
 			//verifying the login is hr or employee
-			if (s == "hr") {
-				//creating session 
+			if(!s.matches("false"))
+			{
 				session=request.getSession();
 		        session.setAttribute("empid", empl.getEmp_id());
-		        session.setAttribute("password", empl.getPassword());
-				return new LoginMessage("Hr Login Success", true);
+		        if(s.matches("hr"))
+		        	return new LoginMessage("Hr Login Success", true);
+		        else
+		        	return new LoginMessage("Login Success", true);
+		        
 			}
-			else if(s=="emp"){
-				//creating session 
-				session=request.getSession();
-		        session.setAttribute("empid", empl.getEmp_id());
-		        session.setAttribute("password", empl.getPassword());
-				return new LoginMessage("Emp Login Success", true);
-			}
+			
 		} catch (Exception e) {
 			
 			//handing the exception

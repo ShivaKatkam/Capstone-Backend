@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infinite.Project.pojo.Employee;
@@ -42,7 +43,7 @@ public class HrController {
 	}
 	
 	//function for reading all employees
-	@GetMapping("/employees")
+	@GetMapping("/allemployees")
 	public List<Employee> getAllEmployees() {
 		BasicConfigurator.configure();
 		return service.allemployees();
